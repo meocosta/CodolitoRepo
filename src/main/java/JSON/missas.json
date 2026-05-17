@@ -1,1 +1,194 @@
-[{"id":"@320","dia":3,"time":20,"semana":"Quarta","local":"matriz","celebrações":"primeira(o) Quarta do mês"},{"id":"@515","dia":5,"time":15,"semana":"Sexta","local":"matriz","celebrações":"primeira(o) Sexta do mês"},{"id":"@619","dia":6,"time":19,"semana":"Sábado","local":"matriz","celebrações":"primeira(o) Sábado do mês"},{"id":"@78","dia":7,"time":8,"semana":"Domingo","local":"matriz","celebrações":"nenhuma"},{"id":"@710","dia":7,"time":10,"semana":"Domingo","local":"matriz","celebrações":"Missa da Família"},{"id":"@718","dia":7,"time":18,"semana":"Domingo","local":"matriz","celebrações":"Adoração ao Santíssimo Sacramento"},{"id":"@1020","dia":10,"time":20,"semana":"Quarta","local":"matriz","celebrações":"nenhuma"},{"id":"@1215","dia":12,"time":15,"semana":"Sexta","local":"matriz","celebrações":"nenhuma"},{"id":"@1319","dia":13,"time":19,"semana":"Sábado","local":"matriz","celebrações":"nenhuma"},{"id":"@148","dia":14,"time":8,"semana":"Domingo","local":"matriz","celebrações":"nenhuma"},{"id":"@1410","dia":14,"time":10,"semana":"Domingo","local":"matriz","celebrações":"nenhuma"},{"id":"@1418","dia":14,"time":18,"semana":"Domingo","local":"matriz","celebrações":"nenhuma"},{"id":"@1720","dia":17,"time":20,"semana":"Quarta","local":"matriz","celebrações":"nenhuma"},{"id":"@1915","dia":19,"time":15,"semana":"Sexta","local":"matriz","celebrações":"nenhuma"},{"id":"@2019","dia":20,"time":19,"semana":"Sábado","local":"matriz","celebrações":"nenhuma"},{"id":"@218","dia":21,"time":8,"semana":"Domingo","local":"matriz","celebrações":"Missa do Dizimista"},{"id":"@2110","dia":21,"time":10,"semana":"Domingo","local":"matriz","celebrações":"Missa do Dizimista"},{"id":"@2118","dia":21,"time":18,"semana":"Domingo","local":"matriz","celebrações":"Missa do Dizimista"},{"id":"@2420","dia":24,"time":20,"semana":"Quarta","local":"matriz","celebrações":"nenhuma"},{"id":"@2615","dia":26,"time":15,"semana":"Sexta","local":"matriz","celebrações":"nenhuma"},{"id":"@2719","dia":27,"time":19,"semana":"Sábado","local":"matriz","celebrações":"nenhuma"},{"id":"@288","dia":28,"time":8,"semana":"Domingo","local":"matriz","celebrações":"nenhuma"},{"id":"@2810","dia":28,"time":10,"semana":"Domingo","local":"matriz","celebrações":"Batismos"},{"id":"@2818","dia":28,"time":18,"semana":"Domingo","local":"matriz","celebrações":"Missa Jovem"}]
+[
+    {
+        "id": "@320",
+        "dia": 3,
+        "time": 20,
+        "semana": "Quarta",
+        "local": "matriz",
+        "celebrações": "primeira(o) Quarta do mês"
+    },
+    {
+        "id": "@515",
+        "dia": 5,
+        "time": 15,
+        "semana": "Sexta",
+        "local": "matriz",
+        "celebrações": "primeira(o) Sexta do mês"
+    },
+    {
+        "id": "@619",
+        "dia": 6,
+        "time": 19,
+        "semana": "Sábado",
+        "local": "matriz",
+        "celebrações": "primeira(o) Sábado do mês"
+    },
+    {
+        "id": "@78",
+        "dia": 7,
+        "time": 8,
+        "semana": "Domingo",
+        "local": "matriz",
+        "celebrações": "nenhuma"
+    },
+    {
+        "id": "@710",
+        "dia": 7,
+        "time": 10,
+        "semana": "Domingo",
+        "local": "matriz",
+        "celebrações": "Missa da Família"
+    },
+    {
+        "id": "@718",
+        "dia": 7,
+        "time": 18,
+        "semana": "Domingo",
+        "local": "matriz",
+        "celebrações": "Adoração ao Santíssimo Sacramento"
+    },
+    {
+        "id": "@1020",
+        "dia": 10,
+        "time": 20,
+        "semana": "Quarta",
+        "local": "matriz",
+        "celebrações": "nenhuma"
+    },
+    {
+        "id": "@1215",
+        "dia": 12,
+        "time": 15,
+        "semana": "Sexta",
+        "local": "matriz",
+        "celebrações": "nenhuma"
+    },
+    {
+        "id": "@1319",
+        "dia": 13,
+        "time": 19,
+        "semana": "Sábado",
+        "local": "matriz",
+        "celebrações": "nenhuma"
+    },
+    {
+        "id": "@148",
+        "dia": 14,
+        "time": 8,
+        "semana": "Domingo",
+        "local": "matriz",
+        "celebrações": "nenhuma"
+    },
+    {
+        "id": "@1410",
+        "dia": 14,
+        "time": 10,
+        "semana": "Domingo",
+        "local": "matriz",
+        "celebrações": "nenhuma"
+    },
+    {
+        "id": "@1418",
+        "dia": 14,
+        "time": 18,
+        "semana": "Domingo",
+        "local": "matriz",
+        "celebrações": "nenhuma"
+    },
+    {
+        "id": "@1720",
+        "dia": 17,
+        "time": 20,
+        "semana": "Quarta",
+        "local": "matriz",
+        "celebrações": "nenhuma"
+    },
+    {
+        "id": "@1915",
+        "dia": 19,
+        "time": 15,
+        "semana": "Sexta",
+        "local": "matriz",
+        "celebrações": "nenhuma"
+    },
+    {
+        "id": "@2019",
+        "dia": 20,
+        "time": 19,
+        "semana": "Sábado",
+        "local": "matriz",
+        "celebrações": "nenhuma"
+    },
+    {
+        "id": "@218",
+        "dia": 21,
+        "time": 8,
+        "semana": "Domingo",
+        "local": "matriz",
+        "celebrações": "Missa do Dizimista"
+    },
+    {
+        "id": "@2110",
+        "dia": 21,
+        "time": 10,
+        "semana": "Domingo",
+        "local": "matriz",
+        "celebrações": "Missa do Dizimista"
+    },
+    {
+        "id": "@2118",
+        "dia": 21,
+        "time": 18,
+        "semana": "Domingo",
+        "local": "matriz",
+        "celebrações": "Missa do Dizimista"
+    },
+    {
+        "id": "@2420",
+        "dia": 24,
+        "time": 20,
+        "semana": "Quarta",
+        "local": "matriz",
+        "celebrações": "nenhuma"
+    },
+    {
+        "id": "@2615",
+        "dia": 26,
+        "time": 15,
+        "semana": "Sexta",
+        "local": "matriz",
+        "celebrações": "nenhuma"
+    },
+    {
+        "id": "@2719",
+        "dia": 27,
+        "time": 19,
+        "semana": "Sábado",
+        "local": "matriz",
+        "celebrações": "nenhuma"
+    },
+    {
+        "id": "@288",
+        "dia": 28,
+        "time": 8,
+        "semana": "Domingo",
+        "local": "matriz",
+        "celebrações": "nenhuma"
+    },
+    {
+        "id": "@2810",
+        "dia": 28,
+        "time": 10,
+        "semana": "Domingo",
+        "local": "matriz",
+        "celebrações": "Batismos"
+    },
+    {
+        "id": "@2818",
+        "dia": 28,
+        "time": 18,
+        "semana": "Domingo",
+        "local": "matriz",
+        "celebrações": "Missa Jovem"
+    }
+]
