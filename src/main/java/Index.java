@@ -8,34 +8,28 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Index {
+    private static final Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
         while (true) {
             System.out.println(
-                    "\n\nBem-vinda ao Codolito\nO que deseja fazer?\n\n1.\tCadastrar novo acólito\n2.\tAdicionar missa no mês\n3.\tListar missas\n4.\tFazer escala\n5.\tListar acólitos\n6.\tCadastrar Missas Fixas\n7.\tSair");
-            int resposta = scanner.nextInt();
+                    "\n\nBem-vinda ao Codolito\nO que deseja fazer?\n\n1.\tCadastrar\n2.\tListar\n3.\tFazer escala\n4.\tDeletar\n5.\tSair");
+            int resposta = sc.nextInt();
             switch (resposta) {
                 case 1:
-                    cadastrarAcolito();
+                    Cadastrar();
                     break;
                 case 2:
-                    adicionarMissa();
+                    Listar();
                     break;
                 case 3:
-                    listarMissas();
-                    break;
-                case 4:
                     fazerEscala();
                     break;
+                case 4:
+                    Deletar();
+                    break;
                 case 5:
-                    listarAcolitos();
-                    break;
-                case 6:
-                    MissasFixas();
-                    break;
-                case 7:
                     System.out.println("Saindo...");
                     System.exit(0);
                 default:
@@ -45,6 +39,96 @@ public class Index {
         }
     }
 
+    //Cadastrar Missas ou Acólitos
+    public static void Cadastrar() {
+        System.out.println("\n\nO que deseja cadastrar?\n1. Acólito\n2. Missa");
+        int resposta = sc.nextInt();
+        switch (resposta) {
+            case 1:
+                cadastrarAcolito();
+                break;
+            case 2:
+                adicionarMissa();
+                break;
+            default:
+                System.out.println("Opção inválida. Por favor, escolha uma opção válida.");
+                break;
+        }
+    }
+
+    public static void Listar() {
+        System.out.println("\n\nO que deseja listar?\n1. Acólitos\n2. Missas");
+        int resposta = sc.nextInt();
+        switch (resposta) {
+            case 1 -> {
+                List<Acolito> acolitos = pegaAcolitos();
+                if(acolitos == null || acolitos.isEmpty()){
+                    System.out.println("Nenhum acólito cadastrado.");
+                    return;
+                }
+                for (Acolito a : acolitos) {
+                    a.apresenta();
+                }
+            }
+            case 2 ->{
+                List<Missa> missas = pegaMissa();
+                if(missas == null || missas.isEmpty()){
+                    System.out.println("Nenhuma missa cadastrada.");
+                    return;
+                }
+                for (Missa m : missas) {
+                    m.apresenta();
+                }
+            }
+            default -> {
+                System.out.println("Opção inválida. Por favor, escolha uma opção válida.");
+            }
+        }
+    }
+
+    // Deletar Missas ou Acólitos
+    public static void Deletar() {
+        System.out.println("O que deseja deletar?\n1. Missa\n2. Acólito");
+        int resposta = sc.nextInt();
+        switch (resposta) {
+            case 1:
+                List<Missa> Missas= pegaMissa();
+                for(Missa m : Missas){
+                    m.apresenta();
+                }
+                System.out.println("Digite o ID da missa que deseja deletar:");
+                int id = sc.nextInt();
+                for(Missa m : Missas){
+                    if(m.getId().equals("@"+id)){
+                        Missas.remove(m);
+                        break;
+                    }
+                }
+                salvaJSON(Missas, "C:\\Users\\me250\\projetos\\codolito-master\\src\\main\\java\\JSON\\missas.json", "Missas");
+                break;
+
+            case 2:
+                List<Acolito> Acolitos= pegaAcolitos();
+                for(Acolito a : Acolitos){
+                    a.apresenta();
+                }
+                System.out.println("Digite o nome do acólito que deseja deletar:");
+                String nome = sc.next();
+                for(Acolito a : Acolitos){
+                    if(a.getNome().equals(nome)){
+                        Acolitos.remove(a);
+                        break;
+                    }
+                }
+                salvaJSON(Acolitos, "C:\\Users\\me250\\projetos\\codolito-master\\src\\main\\java\\JSON\\acolitos.json", "Acólitos");
+                break;
+        
+            default:
+                break;
+        }
+    }
+
+    // modelagem para salvar jsons
     private static void salvaJSON(Object content, String filePath, String nome) {
         try {
             ObjectMapper mapper = new ObjectMapper();
@@ -84,32 +168,13 @@ public class Index {
 
     }
 
-    // listar acólitos
-    private static void listarAcolitos() {
-        try {
-            List<Acolito> acolitos = pegaAcolitos();
-
-            if (acolitos == null || acolitos.isEmpty()) {
-                System.out.println("Nenhum acólito cadastrado.");
-                return;
-            }
-
-            for (Acolito acolito : acolitos) {
-                acolito.apresenta();
-            }
-        } catch (Exception e) {
-            System.out.println("Erro ao listar acólitos: " + e.getMessage());
-        }
-    }
-
     // cadastrar Acolitos
     private static void cadastrarAcolito() {
         List<Acolito> acolitos = pegaAcolitos();
-        Scanner scanner = new Scanner(System.in);
         Acolito acolito = new Acolito();
         System.out.println("\n\nCadastrar Acólito");
         System.out.println("Insira o nome do acólito:");
-        acolito.setNome(scanner.nextLine());
+        acolito.setNome(sc.nextLine());
         acolito.setDiasIndisponiveisFunction();
         acolito.setDisponibilidadeFunction();
         acolito.setPreferenciasFunction();
@@ -121,53 +186,27 @@ public class Index {
     // cadastrar missas
     public static void adicionarMissa() {
         List<Missa> missas = pegaMissa();
-        Scanner scanner = new Scanner(System.in);
         Missa missa = new Missa();
         System.out.println("\n\nCadastrar Missa");
         System.out.println("Insira o dia da missa:");
-        missa.setDia(scanner.nextInt());
-        scanner.nextLine();
+        missa.setDia(sc.nextInt());
+        sc.nextLine();
         missa.setLocal();
         missa.setSemana();
         System.out.println("Insira o horário da missa:");
-        missa.setTime(scanner.nextInt());
+        missa.setTime(sc.nextInt());
         Missa newmissa = new Missa(missa.getDia(), missa.getLocal(), missa.getSemana(), missa.getTime());
         missas.add(newmissa);
         salvaJSON(missas, "C:\\Users\\me250\\projetos\\codolito-master\\src\\main\\java\\JSON\\missas.json", "Missa");
-    }
-
-    // listar missas
-    public static void listarMissas() {
-        try {
-            List<Missa> missas = pegaMissa();
-
-            if (missas.isEmpty()) {
-                System.out.println("Nenhuma missa cadastrada.");
-                return;
-            }
-
-            for (Missa missa : missas) {
-                missa.apresenta();
-                System.out.println("---------------------------");
-            }
-        } catch (Exception e) {
-            System.out.println("Erro ao listar missas: " + e.getMessage());
-        }
-
     }
 
     // Fazer Escala
     public static void fazerEscala() {
         List<Missa> missas = pegaMissa();
         List<Acolito> acolitos = pegaAcolitos();
-        Scanner scanner = new Scanner(System.in);
 
-        if (acolitos.isEmpty()) {
-            System.out.println("Nenhum acólito cadastrado.");
-            return;
-        }
-        if (missas.isEmpty()) {
-            System.out.println("Nenhuma missa cadastrada.");
+        if (acolitos.isEmpty() || missas.isEmpty()) {
+            System.out.println("Nenhum acólito ou missa cadastrada.");
             return;
         }
 
@@ -216,7 +255,7 @@ public class Index {
                 controler++;
             }
             System.out.println("\nSelecione o acólito para esta missa, separados por virgulas:");
-            String resposta = scanner.nextLine();
+            String resposta = sc.nextLine();
             String[] partes = resposta.split(",");
             for (String parte : partes) {
                 int index = Integer.parseInt(parte.trim());
@@ -259,7 +298,7 @@ public class Index {
         return missas;
     }
 
-    //pegar dias do mês para missas fixas
+    // pegar dias do mês para missas fixas
     public static String[] pegaDiasMes(int primeiroDia) {
         List<Integer> diasMes = new ArrayList<>();
         int dia = primeiroDia;
@@ -273,7 +312,6 @@ public class Index {
     // missas fixas cadastros
     public static void MissasFixas() {
         while (true) {
-            Scanner sc = new Scanner(System.in);
             System.out.println("\n\nCadastrar Missas Fixas:");
             List<Missa> missasFixas = new ArrayList<>();
             System.out.println("Começaremos pelo Domingo, qual dia cai o primeiro domingo? :");
