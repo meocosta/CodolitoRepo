@@ -1,9 +1,11 @@
+package root;
 import java.util.Scanner;
 
 public class Missa {
 
     // Variáveis
     private String id;
+    private final static Scanner sc = new Scanner(System.in);
     private int dia;
     private int time;
     private String semana;
@@ -72,7 +74,6 @@ public class Missa {
     }
 
     public void setSemana() {
-        Scanner sc = new Scanner(System.in);
         String[] semana = {
                 "Segunda", "Terca", "Quarta",
                 "Quinta", "Sexta", "Sabado", "Domingo"
@@ -84,7 +85,6 @@ public class Missa {
     }
 
     public void setLocal() {
-        Scanner sc = new Scanner(System.in);
         System.out.println("Selecione o local:\n1. Matriz\n2. Nª Sª Fátima\n3. Santa Filomena");
         int resposta = sc.nextInt();
         switch (resposta) {
@@ -103,7 +103,6 @@ public class Missa {
     }
 
     public void setCelebrações() {
-        Scanner sc = new Scanner(System.in);
         System.out.println("Tem alguma celebração?\n1. Casamento\n2. Batismo\n 3. Adoração ao Santíssimo\n4. Nenhuma");
         int resposta = sc.nextInt();
         switch (resposta) {

@@ -1,1 +1,76 @@
-[]
+[
+    {
+        "nome": "Maria Elisa",
+        "disponibilidade": {
+            "Sexta": [
+                "MANHA",
+                "TARDE"
+            ],
+            "Terça": [
+                "MANHA",
+                "TARDE"
+            ],
+            "Quarta": [
+                "MANHA",
+                "TARDE"
+            ],
+            "Segunda": [
+                "MANHA",
+                "TARDE"
+            ],
+            "Domingo": [
+                "8",
+                "10",
+                "18"
+            ],
+            "Quinta": [
+                "MANHA",
+                "TARDE"
+            ],
+            "Sabado": [
+                "MANHA",
+                "TARDE",
+                "NOITE"
+            ]
+        },
+        "missas": [],
+        "diasIndisponiveis": null
+    },
+    {
+        "nome": "Emyly",
+        "disponibilidade": {
+            "Sexta": [
+                "TARDE",
+                "NOITE"
+            ],
+            "Terça": [
+                "TARDE",
+                "NOITE"
+            ],
+            "Quarta": [
+                "TARDE",
+                "NOITE"
+            ],
+            "Segunda": [
+                "TARDE",
+                "NOITE"
+            ],
+            "Domingo": [
+                "8",
+                "10",
+                "18"
+            ],
+            "Quinta": [
+                "TARDE",
+                "NOITE"
+            ],
+            "Sabado": [
+                "MANHA",
+                "TARDE",
+                "NOITE"
+            ]
+        },
+        "missas": [],
+        "diasIndisponiveis": null
+    }
+]

@@ -1,3 +1,4 @@
+package root;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +13,6 @@ public class Acolito {
     private String nome;
     private List<Integer> DiasIndisponiveis;
     private Map<String, List<String>> disponibilidade;
-    private Map<String, List<String>> preferencias;
     private List<Missa> missas = new ArrayList<>();
 
     // Construtores
@@ -28,23 +28,10 @@ public class Acolito {
         this.disponibilidade = disponibilidade;
     }
 
-    // construtor completo
-    public Acolito(String nome, List<Integer> DiasIndisponiveis, Map<String, List<String>> disponibilidade,
-            Map<String, List<String>> preferencias) {
-        this.nome = nome;
-        this.DiasIndisponiveis = DiasIndisponiveis;
-        this.disponibilidade = disponibilidade;
-        this.preferencias = preferencias;
-    }
-
     // Getters
 
     public List<Missa> getMissas() {
         return missas;
-    }
-
-    public Map<String, List<String>> getPreferencias() {
-        return preferencias;
     }
 
     public String getNome() {
@@ -60,14 +47,6 @@ public class Acolito {
     }
 
     // Setters
-
-    public void setPreferencias(Map<String, List<String>> preferencias) {
-        this.preferencias = preferencias;
-    }
-
-    public void setPreferenciasFunction() {
-        this.preferencias = this.selecionaDias("em que prefere servir");
-    }
 
     public void setNome(String nome) {
         this.nome = nome;
@@ -147,7 +126,7 @@ public class Acolito {
                     String[] periodos = { "MANHA", "TARDE", "NOITE" };
                     adicionarSemDuplicar(selecionados, dia, periodos[periodoIndex]);
                 } else {
-                    String[] horarios = { "08", "10", "18" };
+                    String[] horarios = { "8", "10", "18" };
                     adicionarSemDuplicar(selecionados, dia, horarios[periodoIndex]);
                 }
 
@@ -193,7 +172,6 @@ public class Acolito {
         System.out.println("Disponibilidade: ");
         this.apresentaDias(this.getDisponibilidade());
         System.out.println("Preferências: ");
-        this.apresentaDias(this.getPreferencias());
         if (missas != null && !missas.isEmpty()) {
 
             System.out.println("\nMissas:");

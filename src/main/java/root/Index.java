@@ -1,7 +1,12 @@
+package root;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
 import java.io.File;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -46,12 +51,9 @@ public class Index {
 
     // Cadastrar Missas ou Acólitos
     public static void Cadastrar() {
-        System.out.println("\n\nO que deseja cadastrar?\n1. Acólito\n2. Missa");
+        System.out.println("\n\nO que deseja cadastrar?\n1. Acólito\n2. Missa\n3. Missas Fixas");
         int resposta = sc.nextInt();
         switch (resposta) {
-            case 1:
-                cadastrarAcolito();
-                break;
             case 2:
                 adicionarMissa();
                 break;
@@ -94,7 +96,7 @@ public class Index {
 
     // Deletar Missas ou Acólitos
     public static void Deletar() {
-        System.out.println("O que deseja deletar?\n1. Missa\n2. Acólito");
+        System.out.println("O que deseja deletar?\n1. Missa\n2. Acólito\n3. Limpar Missas Fixas");
         int resposta = sc.nextInt();
         switch (resposta) {
             case 1:
@@ -132,12 +134,23 @@ public class Index {
                         "Acólitos");
                 break;
 
+            case 3:
+                limparMissasFixas();
+                break;
+
             default:
                 break;
         }
     }
 
     // ESCALAS --------------------------------------------------------
+
+    private static void limparMissasFixas() {
+        List<Missa> missas = pegaMissa();
+        missas.removeAll(missas);
+        salvaJSON(missas, "C:\\Users\\me250\\projetos\\codolito-master\\src\\main\\java\\JSON\\missas.json",
+                "Missas");
+    }
 
     // Fazer Escala
     public static void fazerEscala() {
@@ -152,6 +165,7 @@ public class Index {
         System.out.println("Vamos atualizar os dias disponiveis para cada acólito antes de começar a escala.");
         List<Acolito> atualizaAcolitos = new ArrayList<>();
         for (Acolito c : acolitos) {
+            c.cleanMissas();
             System.out.println("\n\nAcólito: " + c.getNome());
             c.setDiasIndisponiveisFunction();
             atualizaAcolitos.add(c);
@@ -167,7 +181,6 @@ public class Index {
             int controler = 0;
             System.out.println("Acolitos disponíveis para esta missa:");
             for (Acolito a : acolitos) {
-                a.cleanMissas();
                 if (a.getDiasIndisponiveis().contains(m.getDia())) {
                     continue;
                 }
@@ -191,20 +204,16 @@ public class Index {
                         continue;
                     }
                 }
-                if (a.getPreferencias().get(m.getSemana()) != null) {
-                    if (a.getPreferencias().get(m.getSemana()).contains(String.valueOf(m.getTime()))
-                            || a.getPreferencias().get(m.getSemana()).contains(tempo)) {
-                        System.out.printf("\n[%d]* " + a.getNome() + " (preferencia)", controler);
-                        disponiveis.add(a.getNome());
-                        controler++;
-                        continue;
-                    }
-                }
                 System.out.printf("\n[%d]- " + a.getNome(), controler);
                 disponiveis.add(a.getNome());
                 controler++;
             }
+            if(disponiveis.isEmpty()){
+                System.out.println("\nNenhum acólito disponível para esta missa.");
+                continue;
+            }
             System.out.println("\nSelecione o acólito para esta missa, separados por virgulas:");
+            sc.nextLine(); // limpa buffer
             String resposta = sc.nextLine();
             String[] partes = resposta.split(",");
             for (String parte : partes) {
@@ -233,38 +242,55 @@ public class Index {
     }
 
     // Listar Escala Atual
-    public static void EscalaAtual() {
+    public static List<String[]> EscalaAtual() {
         List<Acolito> acolitos = pegaAcolitos();
-        if (acolitos.isEmpty()) {
-            System.out.println("\n\nNenhum acólito cadastrado.");
-            return;
+        List<String[]> escala = new ArrayList<>();
+        List<Missa> missas = pegaMissa();
+        if (acolitos.isEmpty() || missas.isEmpty()) {
+            System.out.println("\n\nNenhum acólito ou missa cadastrada.");
+            return new ArrayList<>();
         }
         for (Missa m : pegaMissa()) {
-            m.apresenta();
-            System.out.println("\n\nAcolitos designados para esta missa:");
+            String[] missa = new String[9];
+            missa[0] = "" + m.getDia();
+            missa[1] = m.getSemana();
+            missa[2] = "" + m.getTime()+" hrs";
+            missa[3] = m.getLocal();
+            String[] acolitoDesignado = new String[4];
+            int contador = 0;
             for (Acolito a : acolitos) {
                 if (a.getMissas().contains(m)) {
-                    System.out.println("- " + a.getNome());
+                    acolitoDesignado[contador] = a.getNome();
+                    contador++;
                 }
             }
+            missa[4] = acolitoDesignado[0] != null ? acolitoDesignado[0] : "-";
+            missa[5] = acolitoDesignado[1] != null ? acolitoDesignado[1] : "-";
+            missa[6] = acolitoDesignado[2] != null ? acolitoDesignado[2] : "-";
+            missa[7] = acolitoDesignado[3] != null ? acolitoDesignado[3] : "-";
+            missa[8] = m.getCelebrações() != "nenhuma" ? m.getCelebrações() : "-"; // observações
+            escala.add(missa);
         }
+        return escala;
     }
 
     // MODELAGENS --------------------------------------------------------
 
     // modelagem para salvar jsons
-    private static void salvaJSON(Object content, String filePath, String nome) {
+    public static void salvaJSON(Object content, String filePath, String nome) {
         try {
             ObjectMapper mapper = new ObjectMapper();
             mapper.writeValue(new File(filePath), content);
-            System.out.println("\n\n" + nome + " salvo com sucesso!");
+            String msg = nome + " salvo com sucesso!";
+            JOptionPane.showMessageDialog(null, msg);
         } catch (Exception e) {
-            System.out.println("\n\nErro ao salvar " + nome + ": " + e.getMessage());
+            String msg = "Erro ao salvar " + nome + ": " + e.getMessage();
+             JOptionPane.showMessageDialog(null, msg);
         }
     }
 
     // pega missas do json
-    private static List<Missa> pegaMissa() {
+    public static List<Missa> pegaMissa() {
         try {
             File file = new File("C:\\Users\\me250\\projetos\\codolito-master\\src\\main\\java\\JSON\\missas.json");
             ObjectMapper mapper = new ObjectMapper();
@@ -278,7 +304,7 @@ public class Index {
     }
 
     // pega acolitos do json
-    private static List<Acolito> pegaAcolitos() {
+    public static List<Acolito> pegaAcolitos() {
         try {
             File file = new File(
                     "C:\\\\Users\\\\me250\\\\projetos\\\\codolito-master\\\\src\\\\main\\\\java\\\\JSON\\\\acolitos.json");
@@ -290,21 +316,6 @@ public class Index {
             return null;
         }
 
-    }
-
-    // cadastrar Acolitos
-    private static void cadastrarAcolito() {
-        List<Acolito> acolitos = pegaAcolitos();
-        Acolito acolito = new Acolito();
-        System.out.println("\n\nCadastrar Acólito");
-        System.out.println("Insira o nome do acólito:");
-        acolito.setNome(sc.nextLine());
-        acolito.setDiasIndisponiveisFunction();
-        acolito.setDisponibilidadeFunction();
-        acolito.setPreferenciasFunction();
-        acolitos.add(acolito);
-        salvaJSON(acolitos, "C:\\Users\\me250\\projetos\\codolito-master\\src\\main\\java\\JSON\\acolitos.json",
-                "Acólito");
     }
 
     // cadastrar missas
@@ -340,87 +351,4 @@ public class Index {
         return missas;
     }
 
-    // pegar dias do mês para missas fixas
-    public static String[] pegaDiasMes(int primeiroDia) {
-        List<Integer> diasMes = new ArrayList<>();
-        int dia = primeiroDia;
-        while (dia <= 31) {
-            diasMes.add(dia);
-            dia += 7;
-        }
-        return diasMes.stream().map(String::valueOf).toArray(String[]::new);
-    }
-
-    // missas fixas cadastros
-    public static void MissasFixas() {
-        while (true) {
-            System.out.println("\n\nCadastrar Missas Fixas:");
-            List<Missa> missasFixas = new ArrayList<>();
-            System.out.println("Começaremos pelo Domingo, qual dia cai o primeiro domingo? :");
-            int respostaDias = sc.nextInt();
-            String[] dias = pegaDiasMes(respostaDias);
-            for (String dia : dias) {
-                if (dia == dias[0]) {
-                    Missa dom1 = new Missa(Integer.parseInt(dia.trim()), "Domingo", 8, "nenhuma");
-                    Missa dom2 = new Missa(Integer.parseInt(dia.trim()), "Domingo", 10, "Missa da Família");
-                    Missa dom3 = new Missa(Integer.parseInt(dia.trim()), "Domingo", 18,
-                            "Adoração ao Santíssimo Sacramento");
-                    missasFixas.add(dom1);
-                    missasFixas.add(dom2);
-                    missasFixas.add(dom3);
-                    continue;
-                }
-                if (dia == dias[2]) {
-                    Missa dom1 = new Missa(Integer.parseInt(dia.trim()), "Domingo", 8, "Missa do Dizimista");
-                    Missa dom2 = new Missa(Integer.parseInt(dia.trim()), "Domingo", 10, "Missa do Dizimista");
-                    Missa dom3 = new Missa(Integer.parseInt(dia.trim()), "Domingo", 18, "Missa do Dizimista");
-                    missasFixas.add(dom1);
-                    missasFixas.add(dom2);
-                    missasFixas.add(dom3);
-                    continue;
-                }
-                if (dia == dias[3]) {
-                    Missa dom1 = new Missa(Integer.parseInt(dia.trim()), "Domingo", 8, "nenhuma");
-                    Missa dom2 = new Missa(Integer.parseInt(dia.trim()), "Domingo", 10, "Batismos");
-                    Missa dom3 = new Missa(Integer.parseInt(dia.trim()), "Domingo", 18, "Missa Jovem");
-                    missasFixas.add(dom1);
-                    missasFixas.add(dom2);
-                    missasFixas.add(dom3);
-                    continue;
-                }
-                Missa dom1 = new Missa(Integer.parseInt(dia.trim()), "Domingo", 8, "nenhuma");
-                Missa dom2 = new Missa(Integer.parseInt(dia.trim()), "Domingo", 10, "nenhuma");
-                Missa dom3 = new Missa(Integer.parseInt(dia.trim()), "Domingo", 18, "nenhuma");
-                missasFixas.add(dom1);
-                missasFixas.add(dom2);
-                missasFixas.add(dom3);
-            }
-            System.out.println("Agora as quartas, qual dia cai a primeira quarta?:");
-            int respostaQuartas = sc.nextInt();
-            String[] quartas = pegaDiasMes(respostaQuartas);
-            missasFixas.addAll(cadastrarMissas("Quarta", 20, quartas));
-            String[] sextas = pegaDiasMes(respostaQuartas + 2);
-            missasFixas.addAll(cadastrarMissas("Sexta", 15, sextas));
-            String[] sabados = pegaDiasMes(respostaQuartas + 3);
-            missasFixas.addAll(cadastrarMissas("Sábado", 19, sabados));
-            System.out.println("Missas à cadastrar:");
-            missasFixas.sort(Comparator.comparing(Missa::getDia));
-            for (Missa missa : missasFixas) {
-                missa.apresenta();
-            }
-            System.out.println("Todas corretas? (true/false)");
-            boolean resposta = sc.nextBoolean();
-            if (resposta) {
-                List<Missa> missas = pegaMissa();
-                missas.addAll(missasFixas);
-                salvaJSON(missas, "C:\\Users\\me250\\projetos\\codolito-master\\src\\main\\java\\JSON\\missas.json",
-                        "Missa Fixas");
-                break;
-            } else {
-                System.out.println("Vamos refazer o processo.");
-            }
-
-        }
-
-    }
 }

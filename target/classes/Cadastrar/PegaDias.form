@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="3"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="SegundaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="SegundaManha" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="SegundaTarde" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="SegundaNoite" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="TerçaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="TercaManha" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="TercaTarde" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="TercaNoite" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="QuartaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="QuartaManha" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="QuartaTarde" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="QuartaNoite" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="QuintaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="QuintaManha" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="QuintaTarde" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="QuintaNoite" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="SextaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="SextaManha" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="SextaTarde" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="SextaNoite" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="EnviarButton" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="SegundaLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="SegundaManha" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="SegundaTarde" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="SegundaNoite" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="TerçaLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="TercaManha" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TercaTarde" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TercaNoite" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="QuartaLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="QuartaManha" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="QuartaTarde" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="QuartaNoite" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="QuintaLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="QuintaManha" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="QuintaTarde" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="QuintaNoite" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="SextaLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="SextaManha" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="SextaTarde" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="SextaNoite" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="EnviarButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="12" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="SegundaLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Segunda"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="SegundaManha">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Manh&#xe3;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="SegundaTarde">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tarde"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="SegundaNoite">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Noite"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Ter&#xe7;aLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ter&#xe7;a"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="TercaManha">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Manh&#xe3;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="TercaTarde">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tarde"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="TercaNoite">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Noite"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="QuartaLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Quarta"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="QuartaManha">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Manh&#xe3;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="QuartaTarde">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tarde"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="QuartaNoite">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Noite"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="QuintaLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Quinta"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="QuintaManha">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Manh&#xe3;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="QuintaTarde">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tarde"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="QuintaNoite">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Noite"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="SextaLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sexta"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="SextaManha">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Manh&#xe3;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="SextaTarde">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tarde"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="SextaNoite">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Noite"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="EnviarButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Enviar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EnviarButtonActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>
